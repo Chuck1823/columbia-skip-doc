@@ -33,17 +33,40 @@
 columbia-skip-doc
 =================
 
+## Setup instructions
 
-    Add a short description here!
+The repo contains a file called conda_environment_py39.yaml that can be used to create a conda environment with all the necessary
+dependencies to run the code. The environment can be created by running the following command:
 
+$ conda env create -f conda_environment_py39.yaml
 
-A longer description of your project goes here...
+This Anaconda environment uses Python 3.9.16. Depending on your conda version, activate the environment by running:
 
+$ conda activate columbia-skip-doc
 
-.. _pyscaffold-notes:
+Note: the yaml file containing the environment assumes a Anaconda installation at a standard location: 
 
-Note
-====
+$ /usr/local/anaconda3
 
-This project has been set up using PyScaffold 4.4. For details and usage
-information on PyScaffold see https://pyscaffold.org/.
+If your Anaconda installation is not at this location, please modify the yaml file accordingly in order to generate the environment.
+However, please do not commit that change to the repo.
+
+With the activated environment, you should be able to run Streamlit by running the following command:
+
+$ streamlit hello
+
+This will open a tab in your browser to give you an idea of Streamlit. Once you're familiarized, you can run the app by running:
+
+$ streamlit run streamlit_app.py
+
+Note: this needs to happen from the $project_root/src/columbia_skip_doc/ directory.
+
+This effectively runs the Python script which for now only sets up a logger, has wrapper functions and takes a few optional command
+line argument. Let's follow the standard trunk-based development for branching with a develop and main branch (golden copy). See
+"Trunk-based development" in https://www.flagship.io/git-branching-strategies/ for more details.
+
+<A longer description of your project goes here...>
+
+.. image:: https://img.shields.io/badge/-PyScaffold-005CA0?logo=pyscaffold
+    :alt: Project generated with PyScaffold
+    :target: https://pyscaffold.org/
