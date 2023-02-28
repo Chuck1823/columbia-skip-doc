@@ -7,12 +7,15 @@ import logging
 import sys
 
 import streamlit as st
+import datapipeline as dp
+
+from utils import setup_logging
 
 __author__ = "Charles Antoine Malenfant & Lance Norman"
 __copyright__ = "Charles Antoine Malenfant & Lance Norman"
 __license__ = "MIT"
 
-_logger = logging.getLogger(__name__)
+CLASS_NAME = __name__
 
 
 def parse_args(args):
@@ -46,18 +49,6 @@ def parse_args(args):
     return parser.parse_args(args)
 
 
-def setup_logging(loglevel):
-    """Setup basic logging
-
-    Args:
-      loglevel (int): minimum loglevel for emitting messages
-    """
-    logformat = "[%(asctime)s] %(levelname)s:%(name)s:%(message)s"
-    logging.basicConfig(
-        level=loglevel, stream=sys.stdout, format=logformat, datefmt="%Y-%m-%d %H:%M:%S"
-    )
-
-
 def main(args):
     """Wrapper allowing 
 
@@ -66,7 +57,7 @@ def main(args):
           (for example  ``["--verbose", "42"]``).
     """
     args = parse_args(args)
-    setup_logging(args.loglevel)
+    _logger = setup_logging(logging.DEBUG, CLASS_NAME)
 
     x = st.slider("Select a value")
     st.write(x, "squared is", x * x)
