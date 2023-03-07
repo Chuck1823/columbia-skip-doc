@@ -1,4 +1,4 @@
-name: columbia_skip_doc
+name: BDAI_EECSE6895
 channels:
   - defaults
 dependencies:
@@ -68,6 +68,7 @@ dependencies:
       - responses==0.18.0
       - rich==13.3.1
       - rouge==1.0.0
+      - scikit-learn==1.2.1
       - scipy==1.10.1
       - semver==2.13.0
       - sentencepiece==0.1.96
@@ -75,9 +76,11 @@ dependencies:
       - smmap==5.0.0
       - streamlit==1.19.0
       - tensorboardx==2.6
+      - threadpoolctl==3.1.0
       - tokenizers==0.13.2
       - toml==0.10.2
       - toolz==0.12.0
+      - torch==1.13.1
       - tornado==6.2
       - tqdm==4.64.1
       - transformers==4.26.1
@@ -91,4 +94,4 @@ dependencies:
       - yacs==0.1.8
       - yarl==1.8.2
       - zipp==3.14.0
-prefix: /usr/local/anaconda3/envs/columbia_skip_doc
+prefix: /usr/local/anaconda3/envs/BDAI_EECSE6895

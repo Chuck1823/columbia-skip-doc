@@ -51,16 +51,3 @@ class DataPipeline:
 
         return
     
-
-if __name__ == "__main__":
-    data_fp = os.path.join(PRJ_ROOT_STR, "data", "All-2479-Answers-retrieved-from-MedQuAD.csv")
-    batch_size = 32
-    data_classes_fp = os.path.join(PRJ_ROOT_STR, "data", "All-qrels_LiveQAMed2017-TestQuestions_2479_Judged-Answers.txt")
-    shuffle = False
-    class_filter = None
-
-    dp = DataPipeline(data_fp, batch_size, data_classes_fp, shuffle, class_filter)
-    dp.read_and_clean_data()
-    utils.show_df_describe_and_head(dp.data_df)
-    utils.show_df_describe_and_head(dp.data_classes_df)
-    
