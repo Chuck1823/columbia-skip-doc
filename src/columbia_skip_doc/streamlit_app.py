@@ -62,6 +62,7 @@ def chat_setup():
 
     # title
     st.title("Skip-DOC")
+    st.subheader("Please give a short description of your condition", anchor=None)
 
     # Storing the chat
     if 'generated' not in st.session_state:
@@ -81,9 +82,10 @@ def main(args):
     _logger = setup_logging(logging.DEBUG, CLASS_NAME)
 
     chat_setup()
+
     user_input = get_input()
     if user_input:
-        output = user_input
+        output = "Sorry, Skip-Doc is not operational yet. Please go see a doctor"
         # store the output
         st.session_state.past.append(user_input)
         st.session_state.generated.append(output)
@@ -91,8 +93,8 @@ def main(args):
     # TO DO - get better avatars
     if st.session_state['generated']:
         for i in range(len(st.session_state['generated'])-1, -1, -1):
-            message(st.session_state["generated"][i],
-                    avatar_style="fun-emoji", key=str(i))
+            message(st.session_state["generated"][i], avatar_style="adventurer",
+                    key=str(i))
             message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
 
     _logger.info("Script ends here")
