@@ -136,13 +136,15 @@ if __name__ == "__main__":
     _logger.info(f"Loaded model: {plm.name_or_path}")
 
     template_text = (
-        'Question: {"placeholder":"text_a", "shortenable": "True"} Answer: {"mask"}.'
+        'Question: {"placeholder":"text_a", "shortenable": "True"} Answer: {"mask"}'
     )
 
     template = ManualTemplate(tokenizer=tokenizer, text=template_text)
-    _logger.info(
-        f"Example wrapped in template: {template.wrap_one_example(data_dict['train'][0])}"
-    )
+    wrapped_example = template.wrap_one_example(data_dict["train"][0])
+
+    # _logger.info(
+    #     f"Example wrapped in template: {wrapped_example}"
+    # )
 
     wrapped_tokenizer = WrapperClass(
         max_seq_length=1024,
@@ -151,6 +153,10 @@ if __name__ == "__main__":
         truncate_method="tail",
     )
     _logger.info(f"Initialized tokenizer!")
+
+    tokenized_example = wrapped_tokenizer.tokenize_one_example(
+        wrapped_example, teacher_forcing=False
+    )
 
     train_dataloader, validation_dataloader, test_dataloader = op.generate_data_loaders(
         data_dict=data_dict,

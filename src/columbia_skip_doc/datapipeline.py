@@ -85,7 +85,7 @@ class DataPipeline:
                 try:
                     question = df.loc[idx]['Answer'].split("Question: ")[1].split("URL: ")[0].rstrip()
                     answer = df.loc[idx]['Answer'].split("Question: ")[1].split("URL: ")[1].split("Answer: ")[1].rstrip()
-                    meta = {'answer_confidence': row['label'].split("-")[1]}
+                    meta = {'meta': row['label'].split("-")[1]}
                     guid = row['AnswerID']
                     data_dict[split].append(InputExample(guid=guid, text_a=question, tgt_text=answer, meta=meta))
                 except KeyError as e:
